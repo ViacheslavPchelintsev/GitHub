@@ -6,23 +6,38 @@
 Викличте функцію divide з різними значеннями numerator і denominator, включаючи випадок, коли denominator дорівнює 0 або один з аргументів не є числом.
 Огорніть кожен окремий виклик функції divide в try…catch.Використовуючи блок finally, виведіть повідомлення "Робота завершена" в консоль, навіть якщо помилка виникла або не виникла. */
 
-function divide (numerator , denominator) {
-    try {
-        let result = numerator / denominator;
-        console.log(numerator / denominator);
-        if (result === Infinity || isNaN(result))
-        {throw error}
-return numerator / denominator;
- }
-    catch (error) 
-     {
- console.log (denominator === 0 ? "Error: Denominator by zero" : "Error: Denominator by not a number");
+function divide (numerator, denominator) {
+    if (typeof numerator !== "number" || typeof denominator !== "number" || Number.isNaN(numerator) || Number.isNaN(denominator)) {
+        throw new Error("Numerator and denominator must be numbers");
     }
-    finally {
-console.log("Робота завершена");
+
+    if (denominator === 0) {
+        throw new Error("Denominator cannot be zero");
     }
+
+    return numerator / denominator;
 }
 
-divide (10,5);
-divide (10,"lol");
-divide (10,0)
+try {
+    console.log(divide(10, 5));
+} catch (error) {
+    console.log(`Error: ${error.message}`);
+} finally {
+    console.log("Робота завершена");
+}
+
+try {
+    console.log(divide(10, "lol"));
+} catch (error) {
+    console.log(`Error: ${error.message}`);
+} finally {
+    console.log("Робота завершена");
+}
+
+try {
+    console.log(divide(10, 0));
+} catch (error) {
+    console.log(`Error: ${error.message}`);
+} finally {
+    console.log("Робота завершена");
+}
