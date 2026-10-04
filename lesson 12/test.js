@@ -7,3 +7,5 @@ const obj = {
 console.log(ob)
 
 const myVar = undefined
+
+const myVar2 = null
