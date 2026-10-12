@@ -19,7 +19,7 @@ describe('Training API Test', () => {
         const response = await axios.post("https://jsonplaceholder.typicode.com/posts", {
             title: 'testing API',
             body: 'Some weird text',
-            userId: 11
+            userId: 11,
         });
         expect(response.status).toBe(201);
         console.log(response.data);
